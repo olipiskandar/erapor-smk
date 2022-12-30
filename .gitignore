@@ -18,3 +18,8 @@ yarn-error.log
 /vuexy-shell-scripts
 supervisord.log
 supervisord.pid
+.htaccess
+.user.ini
+error_log
+php.ini
+yarn.lock
