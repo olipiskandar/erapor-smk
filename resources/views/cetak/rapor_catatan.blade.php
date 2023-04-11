@@ -69,7 +69,7 @@ if($get_siswa->rombongan_belajar->tingkat == 10){
 	</thead>
 	<tbody>
 		@if($get_siswa->all_prakerin->count())
-		@foreach($get_siswa->all_prakerin as $prakerin){
+		@foreach($get_siswa->all_prakerin as $prakerin)
 		<tr>
 			<td style="vertical-align: middle;">{{$loop->iteration}}</td>
 			<td>{{$prakerin->mitra_prakerin}}</td>
@@ -140,7 +140,7 @@ if($get_siswa->rombongan_belajar->tingkat == 10){
 	$not_yet = 'Belum dilakukan kelulusan';
 } else*/
 if($get_siswa->rombongan_belajar->semester->semester == 2){
-	if($get_siswa->rombongan_belajar->tingkat == 12){
+	if($get_siswa->rombongan_belajar->tingkat >= 12){
 		$text_status = 'Status Kelulusan';
 		$not_yet = 'Belum dilakukan kelulusan';
 	} else {
@@ -153,7 +153,7 @@ if($get_siswa->rombongan_belajar->semester->semester == 2){
 }
 ?>
 @if($get_siswa->rombongan_belajar->semester->semester == 2)
-@if($get_siswa->rombongan_belajar->tingkat == 12)
+@if($get_siswa->rombongan_belajar->tingkat >= 12)
 <div class="strong"><strong>{{$huruf_kenaikan}}.&nbsp;&nbsp;{{$text_status}}</strong></div>
 @else
 <div class="strong"><strong>{{$huruf_kenaikan}}.&nbsp;&nbsp;{{$text_status}}</strong></div>
