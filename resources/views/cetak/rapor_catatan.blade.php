@@ -97,12 +97,12 @@ if($get_siswa->rombongan_belajar->tingkat == 10){
 		</tr>
 	</thead>
 	<tbody>
-		@if($get_siswa->all_nilai_ekskul->count())
-		@foreach($get_siswa->all_nilai_ekskul as $nilai_ekskul)
+		@if($get_siswa->anggota_ekskul->count())
+		@foreach($get_siswa->anggota_ekskul as $nilai_ekskul)
 		<tr>
 			<td style="vertical-align: middle;">{{$loop->iteration}}</td>
-			<td>{{strtoupper($nilai_ekskul->ekstrakurikuler->nama_ekskul)}}</td>
-			<td>{{$nilai_ekskul->deskripsi_ekskul}}</td>
+			<td>{{strtoupper($nilai_ekskul->rombongan_belajar->nama)}}</td>
+			<td>{{($nilai_ekskul->single_nilai_ekstrakurikuler) ? $nilai_ekskul->single_nilai_ekstrakurikuler->deskripsi_ekskul : ''}}</td>
 		</tr>
 		@endforeach
 		@else
@@ -135,12 +135,11 @@ if($get_siswa->rombongan_belajar->tingkat == 10){
 </table>
 <br />
 <?php
-/*if($cari_tingkat_akhir && !in_array($get_siswa->rombongan_belajar_id, $rombel_4_tahun)){
-	$text_status = 'Status Kelulusan';
-	$not_yet = 'Belum dilakukan kelulusan';
-} else*/
 if($get_siswa->rombongan_belajar->semester->semester == 2){
-	if($get_siswa->rombongan_belajar->tingkat >= 12){
+	if($get_siswa->rombongan_belajar->rombel_empat_tahun){
+		$text_status = 'Kenaikan Kelas';
+		$not_yet = 'Belum dilakukan kenaikan kelas';
+	} elseif($get_siswa->rombongan_belajar->tingkat >= 12 ){
 		$text_status = 'Status Kelulusan';
 		$not_yet = 'Belum dilakukan kelulusan';
 	} else {
